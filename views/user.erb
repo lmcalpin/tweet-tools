@@ -1,0 +1,14 @@
+<% if (@reversed) then %>
+<p>Reversed timeline for user: <span class="username"><%= @username %></span></p>
+<a href="/timeline/standard/<%=@username%>">View Standard Timeline</a>
+<% else %>
+<p>Standard timeline for user: <span class="username"><%= @username %></span></p>
+<a href="/timeline/reversed/<%=@username%>">View Reversed Timeline</a>
+<% end %>
+<div class="timeline">
+<% @twitter_response.timeline.each do |status| %>
+  	<div class="timestamp"><%= status.relative_timestamp %></div>
+  	<div class="message"><%= highlight(status.message) %></div>
+  	<br class="clear"/>
+<% end %>
+</div>

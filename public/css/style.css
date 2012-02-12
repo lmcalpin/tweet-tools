@@ -1,0 +1,152 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	font-family: Verdana, Arial;
+}
+
+html {
+	margin-left: 50px;
+	margin-top: 25px;
+	padding-bottom: 50px;
+}
+
+h1,h2,h3 {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+body {
+	background-color: #151515;
+	color: #b0b0b0;
+	text-align: center;
+}
+
+.description {
+	max-width: 650px;
+}
+
+.bodyContent {
+	margin: auto;
+	width: 800px;
+	background-color: #202020;
+	padding: 5px;
+	text-align: left;
+}
+
+a {
+	color: #eeeeee;
+	text-decoration: none;
+}
+
+a.button {
+	padding: 5px;
+	background-color: #242424;
+	color: #FFFFFF;
+}
+
+a:hover {
+	color: #f1f1f1;
+	text-decoration: underline;
+}
+
+span.twitter-ref {
+	color: #ffff22;
+}
+
+.error {
+	background-color: #FF2222;
+	color: #FFFFFF;
+	padding: 15px;
+	margin: 15px;
+}
+
+.footer {
+	margin-top: 25px;
+	padding-top: 25px;
+	background-color: #252525;
+}
+
+p {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.applicationTitle {
+	color: #ffffff;
+}
+
+.standardForm {
+	
+}
+
+.standardForm .label {
+	float: left;
+	width: 100px;
+	overflow-x: none;
+	background-color: #252525;
+}
+
+.standardForm input {
+	width: 250px;
+}
+
+.standardForm input.action {
+	
+}
+
+span.username {
+	color: #ffffff;
+}
+
+.timeline {
+	padding-top: 10px;
+	width: 800px;
+}
+
+.timeline .timestamp {
+	float: left;
+	width: 150px;
+	overflow-x: none;
+	background-color: #252525;
+}
+
+.timeline .message {
+	float: right;
+	width: 650px;
+}
+
+.clear {
+	clear: both;
+}
+
+.screenname {
+	font-weight: bold;
+}
+
+.userlist {
+	width: 800px;
+}
+
+.userlist img {
+	width: 50px;
+	padding-right: 5px;
+	float: left;
+}
+
+.userlist .screenname {
+	width: 250px;
+	float: left;
+}
+
+.userlist .name {
+	width: 250px;
+	float: left;
+}
+
+.userlist .description {
+	width: 800px;
+}
+
+ul {
+	padding-left: 50px;
+}

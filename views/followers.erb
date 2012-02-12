@@ -1,0 +1,27 @@
+<div id="profile_image" style="float:left; margin-right: 15px; margin-bottom: 10px; border: 1px solid white;">
+  <img src="<%=@user.profile_image_url%>"/>
+</div>
+<p>Viewing followers for user: <span class="username"><a href="http://twitter.com/<%= @user.screen_name %>"><%= @user.screen_name %></a></span></p>
+<a href="/timeline/<%=@user.screen_name%>">View Standard Timeline</a><br/>
+<a href="/timeline/<%=@user.screen_name%>?dir=reversed">View Reversed Timeline</a><br/>
+<a href="/friends/<%=@user.screen_name%>">View Friends</a><br/>
+<br class="clear"/>
+<% if (@next_cursor > 0 || @next_idx > 0) then %>
+  <a href="/followers/<%=@user.screen_name%>?cursor=<%=@next_cursor%>&idx=<%=@next_idx%>">View More Of <%=@user.screen_name%>'s Followers</a>
+<% end %>
+<br/>
+<div class="userlist">
+<% @followers.each do |f| %>
+<img src="<%= f.profile_image_url%>"/>
+<div class="screenname"><a href="/timeline/<%=f.screen_name%>"><%= f.screen_name %></a></div>
+<div class="name"><%= f.name%></div>
+<div class="location"><%= f.location%></div>
+<br class="clear"/>
+<div class="description"><%= f.description %></div>
+<br class="clear"/>
+<% end %>
+</div>
+<% if (@next_cursor > 0 || @next_idx > 0) then %>
+  <a href="/followers/<%=@user.screen_name%>?cursor=<%=@next_cursor%>&idx=<%=@next_idx%>">View More Of <%=@user.screen_name%>'s Followers</a>
+<% end %>
+<br/>

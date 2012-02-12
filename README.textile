@@ -1,0 +1,9 @@
+h1. tweet tools
+
+This is a simple collection of simple tools for Twitter users:
+
+* Timeline Reversal - this makes it easier to follow individuals who frequently post multi-tweet messages (or plays). With the standard timeline display that most Twitter clients use, having the most recent posts first, their posts could sometimes become difficult to follow.
+* Account Rate Limit - displays your account's rate limit
+* Friends and Followers Sorting - display friends and followers in alphabetical order (but only per page, unfortunately)
+
+This is the source code associated with my blog entry "a little sinatra oauth ditty":http://www.lmcalpin.com/post/1178799294/a-little-sinatra-oauth-ditty and the application is hosted on "Heroku":http://tweettools.heroku.com/. 

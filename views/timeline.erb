@@ -1,0 +1,26 @@
+<div id="profile_image" style="float:left; margin-right: 15px; margin-bottom: 10px; border: 1px solid white;">
+  <img src="<%=@user.profile_image_url%>"/>
+</div>
+<div style="width: 300px; float: left; margin-right: 15px;">
+<% if (@reversed) then %>
+	<p>Reversed timeline for user: <span class="username"><a href="http://twitter.com/<%= @user.screen_name %>"><%= @user.screen_name %></a></span></p>
+	<a href="/timeline/<%=@user.screen_name%>">View Standard Timeline</a><br/>
+<% else %>
+	<p>Standard timeline for user: <span class="username"><a href="http://twitter.com/<%= @user.screen_name %>"><%= @user.screen_name %></a></span></p>
+	<a href="/timeline/<%=@user.screen_name%>?dir=reversed">View Reversed Timeline</a><br/>
+<% end %>
+<a href="/followers/<%=@user.screen_name%>">View Followers</a><br/>
+<a href="/friends/<%=@user.screen_name%>">View Friends</a><br/>
+</div>
+<div style="width: 350px; float: left">
+<p>This user has <%=@user.friends_count %> friends and <%= @user.followers_count %> followers.</p>
+<p style="color: #eeeeee;"><%= @user.description %></p>
+</div>
+<br class="clear"/>
+<div class="timeline">
+<% @twitter_response.timeline.each do |status| %>
+  	<div class="timestamp"><%= status.relative_timestamp %></div>
+  	<div class="message"><%= highlight(status.message, @reversed) %></div>
+  	<br class="clear"/>
+<% end %>
+</div>

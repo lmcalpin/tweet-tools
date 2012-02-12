@@ -1,0 +1,34 @@
+<h2>What Is This?</h2>
+<p class="description">
+This is a simple collection of simple tools for <a href="http://www.twitter.com/">Twitter</a> users:
+</p>
+<ul>
+<li>Timeline Reversal - this makes it easier to follow individuals who frequently post multi-tweet messages
+(or plays).  With the standard timeline display that most Twitter clients use, having the 
+most recent posts first, their posts could sometimes become difficult to follow.</li>
+<li>Account Rate Limit - displays your account's rate limit</li>
+<li>Friends and Followers Sorting - display friends and followers in alphabetical order (but only
+per page, unfortunately)</li>
+</ul>
+<br/>
+<%= styled_flash %>
+<% if (@access_token) then %>
+<h3>User Lookup</h3>
+<form class="standardForm" action="/" method="post">
+	<div class="label">User ID:</div>
+	<input class="value" name="userid" />
+	<br/><br/>
+	<input class="action" name="view" type="submit" value="View Timeline" /><br/>
+	<input class="action" name="reversed" type="submit" value="View Reversed Timeline" /><br/>
+</form>
+<br/>
+<h3>Rate Limit</h3>
+<table>
+  <tr><td>Hourly Limit:</td><td><%= @client.rate_limit_status.hourly_limit%></td></tr>
+  <tr><td>Remaining Hits:</td><td><%= @client.rate_limit_status.remaining_hits%></td></tr>
+</table>
+<br/></br/>
+  <a class="button" href="/logout">Logout</a>
+<% else %>
+  <a href="/request"><img src="/images/twitter_sign_in.png"/></a>
+<% end %>
