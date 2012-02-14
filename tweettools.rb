@@ -19,7 +19,6 @@ CONSUMER_SECRET = ENV['TWITTER_SECRET']
 
 configure(:development) do |c|
   require "sinatra/reloader"
-  puts "will reload"
   c.also_reload "*.rb"
 end
 
