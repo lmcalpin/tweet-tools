@@ -30,11 +30,11 @@ before do
 
   @consumer ||= OAuth::Consumer.new(consumer_key, consumer_secret, :site => "http://twitter.com")
 
-  if !session[:oauth][:request_token].nil? && !session[:oauth][:request_token_secret].nil?
+  unless session[:oauth][:request_token].nil? || session[:oauth][:request_token_secret].nil?
     @request_token = OAuth::RequestToken.new(@consumer, session[:oauth][:request_token], session[:oauth][:request_token_secret])
   end
 
-  if !session[:oauth][:access_token].nil? && !session[:oauth][:access_token_secret].nil?
+  unless session[:oauth][:access_token].nil? || session[:oauth][:access_token_secret].nil?
     @access_token = OAuth::AccessToken.new(@consumer, session[:oauth][:access_token], session[:oauth][:access_token_secret])
   end
 
@@ -57,7 +57,7 @@ post '/' do
     redirect @url
   end
   postview = @params['reversed']
-  if (!postview.nil?)
+  unless postview.nil?
     @username = @params['userid']
     @url = '/timeline/' + @username + '?dir=reversed'
     redirect @url
@@ -75,7 +75,7 @@ get '/timeline/' do
 end
 
 get '/timeline/:user' do |user|
-  redirect '/' if !@access_token
+  redirect '/' unless @access_token
   @reversed = (request[:dir] == "reversed")
   @manager = TweetManager.new(@client, user)
   if (@manager.user.nil?) then
@@ -88,7 +88,7 @@ get '/timeline/:user' do |user|
 end
 
 get '/followers/:user' do |user|
-  redirect '/' if !@access_token
+  redirect '/' unless @access_token
   @cursor = request[:cursor]
   @next_idx = request[:idx]
   @manager = TweetManager.new(@client, user)
@@ -104,7 +104,7 @@ get '/followers/:user' do |user|
 end
 
 get '/friends/:user' do |user|
-  redirect '/' if !@access_token
+  redirect '/' unless @access_token
   @cursor = request[:cursor]
   @next_idx = request[:idx]
   @manager = TweetManager.new(@client, user)
