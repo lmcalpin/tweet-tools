@@ -25,10 +25,7 @@ end
 before do
   session[:oauth] ||= {}
 
-  consumer_key = CONSUMER_KEY
-  consumer_secret = CONSUMER_SECRET
-
-  @consumer ||= OAuth::Consumer.new(consumer_key, consumer_secret, :site => "http://twitter.com")
+  @consumer ||= OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, :site => "http://twitter.com")
 
   unless session[:oauth][:request_token].nil? || session[:oauth][:request_token_secret].nil?
     @request_token = OAuth::RequestToken.new(@consumer, session[:oauth][:request_token], session[:oauth][:request_token_secret])
@@ -51,7 +48,7 @@ end
 
 post '/' do
   postview = @params['view']
-  if (!postview.nil?)
+  unless postview.nil?
     @username = @params['userid']
     @url = '/timeline/' + @username
     redirect @url
