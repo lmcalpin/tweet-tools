@@ -1,6 +1,6 @@
 require 'rubygems'
 
-require 'timeago'
+require_relative 'timeago'
 require 'twitter'
 
 # Users:
@@ -67,7 +67,7 @@ class TweetManager
   
   def timeline
     statusentries = []
-    @client.user_timeline(:user=>@userid, :count=>35).each do |status|
+    @client.user_timeline(:screen_name=>@userid, :count=>35).each do |status|
       statusentries << Status.new(status['screen_name'], status.text, status.created_at)
     end
     TweetQueryResponse.new(statusentries, false)

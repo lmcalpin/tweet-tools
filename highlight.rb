@@ -3,7 +3,7 @@ def highlight(str, reversed)
   i = 0
   str.scan(/(\S*|\s*)/).each do |s|
     i += 1
-    t = s.to_s
+    t = s.join(' ')
     if (/htt(p|ps):\/\/.*/ === t) then
       output << '<a href="' + t + '">' + t + '</a>'
     elsif (/@([A-Za-z0-9_]+)/ === t) then
