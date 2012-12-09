@@ -1,2 +1,2 @@
-require 'tweettools'
+require './tweettools'
 run Sinatra::Application
