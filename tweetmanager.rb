@@ -1,6 +1,6 @@
 require 'rubygems'
 
-require_relative 'timeago'
+require './timeago'
 require 'twitter'
 
 # Users:

@@ -1,13 +1,13 @@
 # http://tweettools.heroku.com/ | git@heroku.com:tweettools.git
 require 'rubygems'
 require 'erb'
-require_relative 'highlight'
+require './highlight'
 require 'sinatra'
 require 'sinatra/flash'
 require 'oauth'
 require 'oauth/consumer'
 require 'twitter'
-require_relative 'tweetmanager'
+require './tweetmanager'
 
 enable :sessions
 
