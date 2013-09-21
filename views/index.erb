@@ -23,14 +23,6 @@ per page, unfortunately)</li>
 	<input class="action" name="sentiment" type="submit" value="Sentiment Analysis" /><br/>
 </form>
 <br/>
-<% if (@client) then %>
-<h3>Rate Limit</h3>
-<table>
-  <tr><td>Hourly Limit:</td><td><%= @client.rate_limit_status.hourly_limit%></td></tr>
-  <tr><td>Remaining Hits:</td><td><%= @client.rate_limit_status.remaining_hits%></td></tr>
-</table>
-<% end %>
-<br/></br/>
   <a href="/logout">Logout</a>
 <% else %>
   <a href="/request"><img src="/images/twitter_sign_in.png"/></a>

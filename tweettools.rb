@@ -11,9 +11,9 @@ require './tweetmanager'
 
 enable :sessions
 
-REQUEST_TOKEN_URL = "https://twitter.com/oauth/request_token"
-ACCESS_TOKEN_URL = "https://twitter.com/oauth/access_token"
-AUTHORIZE_URL = "https://twitter.com/oauth/authorize"
+REQUEST_TOKEN_URL = "https://api.twitter.com/oauth/request_token"
+ACCESS_TOKEN_URL = "https://api.twitter.com/oauth/access_token"
+AUTHORIZE_URL = "https://api.twitter.com/oauth/authorize"
 CONSUMER_KEY    = ENV['TWITTER_KEY']
 CONSUMER_SECRET = ENV['TWITTER_SECRET']
 
@@ -25,7 +25,7 @@ end
 before do
   session[:oauth] ||= {}
 
-  @consumer ||= OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, :site => "http://twitter.com")
+  @consumer ||= OAuth::Consumer.new(CONSUMER_KEY, CONSUMER_SECRET, :site => "http://api.twitter.com")
 
   unless session[:oauth][:request_token].nil? || session[:oauth][:request_token_secret].nil?
     @request_token = OAuth::RequestToken.new(@consumer, session[:oauth][:request_token], session[:oauth][:request_token_secret])

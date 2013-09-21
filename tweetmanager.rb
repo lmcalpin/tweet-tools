@@ -36,6 +36,8 @@ class TweetManager
     @userid = userid
     @user = @client.user(userid)
   rescue => e
+    puts e.inspect
+    puts e.backtrace
     @user = nil
   end
   
@@ -72,8 +74,6 @@ class TweetManager
     end
     TweetQueryResponse.new(statusentries, false)
   rescue => e
-    puts e.inspect
-    puts e.backtrace
     TweetQueryResponse.new([], true)
   end
   
