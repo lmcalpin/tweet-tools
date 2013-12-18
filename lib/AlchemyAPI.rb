@@ -1790,35 +1790,22 @@ class AlchemyAPI
 
   def DoPost(endpoint, prefix, parameterObject)
     httpDest = 'http://' + @hostPrefix + '.alchemyapi.com/calls/' + prefix + '/' + endpoint
-
     payloadData = "apikey=" + @apiKey + parameterObject.getParameterString()
-
-    httpObj = Net::HTTP.new(@hostPrefix + ".alchemyapi.com", 80);
-
-    response = httpObj.post(httpDest, payloadData)
-
+    conn = Excon.new(httpDest)
+    response = conn.post(:body => payloadData, :headers => { "Content-Type" => "application/x-www-form-urlencoded" }) 
     return HandleResponse(response, parameterObject)
   end
 
   def DoGet(endpoint, prefix, parameterObject)
     httpDest = 'http://' + @hostPrefix + '.alchemyapi.com/calls/' + prefix + '/' + endpoint
-	
     payloadData = "apikey=" + @apiKey + parameterObject.getParameterString()
-
     httpDest += "?" + payloadData
-	
-    uri = URI.parse(httpDest)
-
-    httpObj = Net::HTTP.new(uri.host, 80);
-
-    request = Net::HTTP::Get.new(uri.request_uri) 
-    response = httpObj.request(request)
-
+    response = Excon.get(httpDest)
     return HandleResponse(response, parameterObject)
   end
 
   def HandleResponse(response, parameterObject)
-    if (response.code != "200")
+    if (response.status != 200)
       raise "HTTP error."
     end
 
